@@ -13,22 +13,31 @@ namespace ToGrayConsoleApplication
         {
             String fileName = "../../image.jpg";
             Bitmap image = new Bitmap(fileName);
+            Bitmap imageGray = (Bitmap)image.Clone();
             int x, y;
 
-            // Loop through the images pixels to reset color.
-            for (x = 0; x < image.Width; x++)
+            // Loop through the images pixels to set color:
+
+            // Lines:
+            for (y = 0; y < image.Height; y++)
             {
-                for (y = 0; y < image.Height; y++)
+                // Print progress:
+                Console.WriteLine("Line " + y.ToString() + " out of " + image.Height.ToString() + " lines.");
+
+                // Columns:
+                for (x = 0; x < image.Width; x++)
                 {
+
                     Color pixelColor = image.GetPixel(x, y);
                     int Gray = (pixelColor.R + pixelColor.G + pixelColor.B) / 3;
                     Color newColor = Color.FromArgb(Gray, Gray, Gray);
-                    image.SetPixel(x, y, newColor); // Now greyscale
+                    imageGray.SetPixel(x, y, newColor); // Now greyscale
                 }
             }
 
+            // Save new image:
             String newFileName = fileName + "_gray.jpg";
-            image.Save(newFileName);
+            imageGray.Save(newFileName);
         }
     }
 }
