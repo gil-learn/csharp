@@ -14,7 +14,9 @@ namespace MultiplicationTableConsoleApplication
             {
                 for (int j=1; j<=10; j++)
                 {
+                    // Calculate the multiplication of the current cell:
                     int Result = i * j;
+                    // Print it:
                     Console.Write(Result.ToString() + "\t");
                 }
                 Console.WriteLine("");
